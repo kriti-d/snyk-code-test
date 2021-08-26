@@ -1,0 +1,18 @@
+name: Snyk Code (SAST) 
+on: 
+  push:
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Snyk to check SAST issues
+        uses: snyk/actions/setup@master
+      - name: Snyk Code Test
+        run: snyk code test --sarif > snyk.sarif
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN}
+      - name: Upload results to Github Code Scanning
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk_sarif
