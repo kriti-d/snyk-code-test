@@ -1,0 +1,7 @@
+Django==1.11.14 # pyup: >=1.11.13,<1.12
+django-compressor==2.2
+django-extensions==1.4.9
+django-model-utils==3.1.2
+arrow==0.12.1
+fool-error-pages==1.0.0
+South==1.0.2
